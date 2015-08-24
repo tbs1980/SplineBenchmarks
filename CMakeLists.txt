@@ -13,6 +13,9 @@ find_package(GSL REQUIRED)
 find_package(Eigen3 REQUIRED)
 
 include_directories(${GSL_INCLUDE_DIRS})
+include_directories(${EIGEN3_INCLUDE_DIR})
 
 add_executable(gslSpline gslSpline.cpp)
 target_link_libraries(gslSpline ${GSL_LIBRARIES})
+
+add_executable(eigenSpline eigenSpline.cpp)
