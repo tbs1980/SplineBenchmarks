@@ -32,8 +32,6 @@ Eigen::RowVectorXd scaledValues(Eigen::VectorXd const& x)
 void testSine()
 {
     typedef Eigen::Spline<double,1> Spline1d;
-    typedef Spline1d::KnotVectorType KnotVectorType;
-    typedef Spline1d::ControlPointVectorType ControlPointVectorType;
 
     // create data
     const size_t numData = 1000;

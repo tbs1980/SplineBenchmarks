@@ -11,11 +11,23 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 find_package(GSL REQUIRED)
 find_package(Eigen3 REQUIRED)
+find_package(FFTW3 REQUIRED)
+find_package(Einspline REQUIRED)
 
 include_directories(${GSL_INCLUDE_DIRS})
 include_directories(${EIGEN3_INCLUDE_DIR})
+include_directories(${FFTW_INCLUDES})
+include_directories(${EINSPLINE_INCLUDES})
+
+if(CMAKE_COMPILER_IS_GNUCXX )
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++98 -pedantic -Wall -Wextra -Wfatal-errors")
+endif()
+
 
 add_executable(gslSpline gslSpline.cpp)
 target_link_libraries(gslSpline ${GSL_LIBRARIES})
 
 add_executable(eigenSpline eigenSpline.cpp)
+
+add_executable(einsplineSpline einsplineSpline.cpp)
+target_link_libraries(einsplineSpline ${EINSPLINE_LIBRARIES} ${FFTW_LIBRARIES})
